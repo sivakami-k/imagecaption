@@ -1,0 +1,52 @@
+
+   {% extends 'parent/parenthome.html'%}
+   {% block content %}   
+      <form action="{% url 'editprofile' id=data.id %}" method="post">
+          {% csrf_token %}
+  
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" class="form-control" value="{{data.name}}" required/>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" value="{{data.email}}"/>
+
+          <label for="">DOB</label>
+          <input type="date" id="email" name="dob" class="form-control" value="{{data.dob}}"/>
+
+          
+          
+          
+          <label for="country">Country</label>
+          <input type="text" id="country"  name="country" class="form-control" value="{{data.country}}"/>
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" class="form-control" value="{{data.state}}"/>
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" class="form-control" value="{{data.city}}"/>
+          <label for="pin">PIN</label>
+          <input type="text" id="pin" name="pin" class="form-control" value="{{data.pin}}"/>
+          <label for="phone">Phone</label>
+
+          <input type="text" name="phone" id="phone"  class="form-control" value="{{data.phone}}" />
+
+
+
+          <input type="submit"  value="EDIT"/>
+  </form>
+<style>
+
+form{
+    border-radius: 8px;
+    
+    margin-top: 10%;
+    margin-left: 20%; 
+    width:60%;
+  
+    margin-bottom: 15%;
+    
+}
+
+
+
+
+</style>
+
+{% endblock %}

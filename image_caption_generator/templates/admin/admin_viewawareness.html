@@ -1,0 +1,58 @@
+{% extends 'admin/adminhome.html'%}
+{% block content %} 
+<form id="form1" name="form1" method="post" action="{% url 'admin_viewawareness'%}">
+    {% csrf_token %}
+
+<table width="200" class="table table-hover table-striped table-bordered">
+
+
+ <tr>
+    <td>INSTRUCTIONS:*</td>
+
+    
+</tr> 
+<tr>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+</tr>
+ <tr>
+
+ </tr>
+<tr>
+
+  <td><a href="{% url 'edit_awareness'%}" class="btn btn-success" style="background-color: orange;border: none;">EDIT</a></td> 
+
+</tr>
+
+</table>
+<div>
+    <video width="320" height="240" controls>
+        <source src="" type="video/mp4">
+        <source src="" type="video/ogg">
+      Your browser does not support the video tag.
+      </video>
+</div>
+
+</form>
+
+
+<style>
+
+form{
+/* background-color: aqua; */
+margin-top: 10%;
+margin-left: 15%;
+width: 70%;
+margin-bottom: 15%;
+}
+
+
+
+
+</style>
+{%endblock%}

@@ -1,0 +1,65 @@
+{% extends 'admin/adminhome.html' %}
+{% block content %}
+<div class="c1">
+  <table width="" class="table table-hover table-striped table-bordered">
+    <tr>
+      <th scope="col">S/No</th>
+        
+        <th scope="col">Name</th>
+
+        <th scope="col">Email</th>
+      <th scope="col">DOB</th>
+        <th scope="col">Gender</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Status</th>
+      
+    </tr>
+    {% for i in data %}
+     <tr>
+      <td>{{forloop.counter}}</td>
+        <td>{{i.name}}</td>
+     
+        <td>{{i.email}}</td>
+        <td>{{i.dob}}</td>
+         <td>{{i.gender}}</td>
+        <td>{{i.country}}<br>{{i.state}}<br>{{i.city}}<br>{{i.pin}}</td>
+         <td>{{i.phone}}</td>
+        <td> 
+         <form id="form1"  method="post" action="{% url 'accept' id=i.login.id %}"  class="d-flex">
+          {% csrf_token %}
+     {% if i.login.Status == 'pending' %}
+       <input type="text" name="status" hidden>
+
+        <button class="btn btn-success" name="status" value="accepted">APPROVE</button>
+        <button class="btn btn-danger" name="status" value="rejected">REJECT</button>
+
+     {% elif i.login.Status == 'accepted' %}
+     <button class="btn btn-danger" name="status" value="rejected">REJECT</button>
+
+     {% else %}
+     <button class="btn btn-success" name="status" value="accepted">APPROVE</button>
+    {% endif %}
+  </form>
+  </td>
+     </tr>
+    {% endfor %}
+     
+  </table></div>
+
+
+
+
+<style>
+.c1{
+  width: 70%;
+  margin-top: 20%;
+  margin-left: 15%;
+  margin-bottom: 15%;
+}
+
+
+
+
+</style>
+{%endblock%}

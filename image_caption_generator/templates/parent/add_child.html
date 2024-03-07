@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{%load static%}
+<title>Course Registration Form Flat Responsive Widget Template :: w3layouts</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Course Registration Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<link href="{% static 'signup/css/style.css'%}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<!-- //web-fonts --> 
+</head>
+<body>
+	<!-- banner -->
+   
+<div class="video"> 
+	<div class="center-container">
+	    <div class="w3ls-agileinfo">
+			<h1>VISION VERBALIZER</h1>	
+		</div>
+		 <div class="bg-agile">
+			<h2>CHILD REGISTRATION </h2>
+			<div class="login-form">	
+				<form action="{% url 'addchild' %}" method="post">
+					{% csrf_token %}
+					<input type="text"  name="name" placeholder="Name" required="" />
+					<!-- <input type="text"  name="email" placeholder="Email" required="" /> -->
+					<input type="date"  name="dob" placeholder="DOB" required="" /><BR>
+           <label for="female" style="color: white;">Gender</label><br><br>
+           <input type="radio" id="female" name="gender" value="Female">
+           <label for="female" style="color: white;">Female</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <input type="radio" id="male" name="gender" value="Male">
+           <label for="male" style="color: white;">Male</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <input type="radio" id="others" name="gender" value="Others">
+           <label for="others" style="color: white;">Others</label><br><br>
+					
+					
+					<div class="left-w3-agile">
+						<select class="form-control" name="disability_type">
+							<option>Disability Type</option>
+							<option>India</option>
+							<option>Georgia</option>
+							<option> Dominica</option>
+							<option>Lithuania</option>
+							<option> Monaco</option>
+						</select>
+						
+					</div>
+					 <div class="right-agileits">
+						<input type="text"  name="disability_per" placeholder="Disability Percentage" required="" />
+					</div> 
+					<!-- <input type="text" name="phone" placeholder="Phone Number" required="" />  -->
+               <input type="text"  name="username" placeholder="Username"required="" />
+					<input type="text"  name="password" placeholder="Password"required="" />
+					<input type="text"  name="confirm_password" placeholder="Confirm Password"  required="" />
+					<input type="submit" value="SUBMIT">
+				</form>	
+				{{ data }}
+			</div>	
+		</div><br><br>
+	<!-- //banner --> 
+	 <!--copyright-->
+		<!-- <div class="copy w3ls">
+		    <p>&copy; 2018 Course Registration Form . All Rights Reserved  | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+	    </div> -->
+	<!--//copyright-->
+	</div>	
+</div>	
+</body>
+</html>

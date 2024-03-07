@@ -1,0 +1,53 @@
+{% extends 'child/childhome.html' %}
+{% block content %}
+      
+      <form action="{% url 'vision2'%} " method="POST">
+        {% csrf_token %}
+      <div class="c3">
+        <label for="formFile" class="form-label"><b>VISION VERBALIZER</b></label>
+        <input class="form-control" type="file" id="formFile">
+      </div><br><br>
+        <div class="c1">
+            <button type="button" class="btn" style=" background-color: rgba(221, 160, 221, 0.385);">UPLOAD</button>
+          </div>
+      </form>
+      </div>
+      
+
+
+
+<style>
+
+    form{
+       margin-top: 10%;
+       margin-left:20%;
+        top:50%;
+        width: 60%;
+       padding: 3%;
+       margin-bottom:15% ;
+       height: 35%;
+        
+    
+        
+    }
+    .c3{
+      
+      color: white;
+       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      border-radius: 4px;
+       background-color: rgba(39, 35, 40, 0.83);
+       
+       height:25%;
+         
+    }
+
+    .c1{
+      
+      text-align: center;
+    }
+    
+    </style>
+
+
+
+{% endblock %}

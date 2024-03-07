@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Course Registration Form Flat Responsive Widget Template :: w3layouts</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Course Registration Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <link href="{% static 'signup/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <style>
+        .card {
+            width: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .card input[type="text"],
+        .card input[type="date"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .card .left-w3-agile,
+        .card .right-agileits {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .b1:hover,
+        .agile_main_grid_left2_grid_bottom a:hover {
+            background: #5fe3f8;
+            color: #fff;
+            transition: .5s ease-in;
+        }
+
+        .b1 {
+            background: #31c4fc;
+            color: #fff;
+            font-size: 17px;
+            margin-top: 10px;
+            border: none;
+            width: 100%;
+            text-align: center;
+            outline: none;
+            letter-spacing: 1px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            padding: 10px 15px;
+            font-family: 'Roboto', sans-serif;
+            transition: .5s ease-in;
+        }
+    </style>
+</head>
+<body>
+
+<div class="video">
+    <div class="center-container">
+        <div class="w3ls-agileinfo">
+
+        </div>
+        <div class="bg-agile">
+            <div class="card">
+                <h2>PROFILE</h2>
+                <div class="login-form">
+
+                    <input type="text" name="name" placeholder="Name" required="" disabled value="{{data.name}}" />
+                    <input type="text" name="email" placeholder="Email" required="" disabled value="{{data.email}}" />
+                    <input type="date" name="dob" placeholder="DOB" required="" value="{{data.dob}}" disabled /><br>
+                    <input type="text" name="gender" placeholder="Gender" value="{{data.gender}}" disabled>
+                    <div class="left-w3-agile">
+                        <input type="text" name="country" placeholder="Country" required="" value="{{data.country}}" disabled />
+                        <input type="text" name="state" placeholder="State" required="" value="{{data.state}}" disabled />
+                    </div>
+
+                    <div class="right-agileits">
+                        <input type="text" name="city" placeholder="City" required="" value="{{data.city}}" disabled />
+                        <input type="text" name="pin" placeholder="PIN" required="" value="{{data.pin}}" disabled />
+                    </div>
+                    <input type="text" name="phone" placeholder="Phone Number" required="" value="{{data.phone}}" disabled />
+
+                    <td><a href="{% url 'editprofile' id=data.id %}" class="btn btn-primary" style="color: white;"><button class="b1">EDIT</button></a></td>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

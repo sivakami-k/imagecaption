@@ -1,0 +1,41 @@
+{% extends 'admin/adminhome.html' %}
+{% block content %}
+<form name="form1" method="post" action="{% url 'adminreview'%}">
+    {% csrf_token %}
+
+</table><br><br><br>
+<table width="200" class="table table-hover table-striped table-bordered">
+<tr>
+  <th scope="col">S/No</th>
+
+  <th scope="col">Name</th>
+  <th scope="col">Email</th>
+  <th scope="col">Date</th>
+  <th scope="col">Review</th>
+</tr>
+
+<tr>
+  <td></td>
+  <td></td>
+   <td></td>
+  
+  <td></td>
+  <td></td>
+</tr>
+
+
+</table>
+
+</form>
+
+<style>
+    form{
+    /* background-color: aqua; */
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    margin-bottom: 15%;
+}
+</style>
+
+{% endblock %}

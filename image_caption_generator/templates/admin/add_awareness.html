@@ -1,0 +1,45 @@
+{% extends 'admin/adminhome.html' %}
+{% block content %}
+<form method="post" enctype="multipart/form-data"  action="{% url 'addawareness'%}">
+    {% csrf_token %}
+    <table width="200" class="table table-hover table-striped table-bordered">
+
+      <tr>
+        <td>ADD INSTRUCTIONS</td>
+          <td><textarea name="feed" required class="form-control"></textarea></td>
+      </tr>
+      
+
+
+    <tr>
+      <td>AWARENESS VIDEOS</td>
+      <td><input type="file" required id="fileField" class="form-control"/></td>
+    </tr>
+   
+         <td></td>
+      <td><input type="submit" name="button" id="button" value="UPLOAD" class="btn btn-success" style="background-color: orange;border: none;"/></td>
+
+    </tr>
+  </table>
+</form>
+
+<style>
+    form {
+      
+      margin-top: 12%;
+      margin-bottom: 15%;
+      margin-left: 20%;
+      width: 60%;
+      
+      
+      
+    }
+    .form-control{
+        border-radius: 4px;
+        
+        height:25%;
+    }
+  
+  </style>
+
+{% endblock %}
