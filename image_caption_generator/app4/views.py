@@ -106,12 +106,22 @@ def adminreview(request):
     return render(request,'admin/admin_viewreview.html')
 
 def addawareness(request):
-    return render(request,'admin/add_awareness.html')
+    if request.method =='POST':
+        instructions=request.POST['instructions']
+        videos=request.FILES['videos']
+        obj=Awareness.objects.create(instructions=instructions,awareness_videos=videos)
+        obj.save()
+        return render(request,'admin/admin_viewawareness.html')
+    else:
+        return render(request,'admin/add_awareness.html')
 
 def admin_viewawareness(request):
-    return render(request,'admin/admin_viewawareness.html')
+    data=Awareness.objects.all()
+    return render(request,'admin/admin_viewawareness.html',{'data':data})
 
 def edit_awareness(request):
+    # if request.method=='post':
+
     return render(request,'admin/admin_editawareness.html')
 
 # def studentreg(request):
@@ -150,15 +160,30 @@ def editprofile(request,id):
         data.city=request.POST['city']
         data.pin=request.POST['pin']
         data.phone=request.POST['phone']
-        print(data.name)
-        print(data.email)
+
         data.save()
-        return HttpResponse("success")
+        return render(request,'parent/viewprofile.html',{'data':data})
     else:  
         return render(request,'parent/editprofile.html',{'data':data})
 
 def changepw(request):
-    return render(request,'parent/changepassword.html')
+    data=request.session['id']
+    data1=Login.objects.get(id=data)
+    if request.method=='POST':
+        current_password=request.POST['current_password']
+        new_password=request.POST['new_password']
+        confirm_password=request.POST['confirm_password']
+        print(current_password)
+        print(new_password)
+        if new_password!=confirm_password:
+            return render(request,'parent/changepassword.html',{'message':'Password not matching'})
+        
+        else:
+            data1.password=confirm_password
+            data1.save()
+            return render(request,'parent/changepassword.html',{'message':'Password changed successfully'})
+    else:
+        return render(request,'parent/changepassword.html')
 
 def vision(request):
     return render(request,'parent/visionverb.html')
@@ -170,9 +195,14 @@ def parentreview(request):
     return render(request,'parent/parent_viewreview.html')
 
 def parent_viewawareness(request):
-    return render(request,'parent/parent_viewawareness.html')
+    data=Awareness.objects.all()
+    return render(request,'parent/parent_viewawareness.html',{'data':data})
+    
 
 def addchild(request):
+    data=request.session['id']
+    data1=Login.objects.get(id=data)
+    data2=Parent.objects.get(login=data1.id)
     if request.method== 'POST':
         name=request.POST['name']
         dob=request.POST['dob']
@@ -181,34 +211,46 @@ def addchild(request):
         disability_percentage=request.POST['disability_per']
         username=request.POST['username']
         if Login.objects.filter(username=username):
-            return render(request,'signup.html',{'data':'Username already exists'})
+            return render(request,'parent/add_child.html',{'message':'Username already exists'})
         password=request.POST['password']
         confirm_password=request.POST['confirm_password']
         if password!=confirm_password:
-            return render(request,'parent/add_child.html',{'data':'Password not matching'})
+            return render(request,'parent/add_child.html',{'message':'Password not matching'})
 
-        data1=Login.objects.create(username=username,password=password,type="Child")
-        data1.save()
+        obj=Login.objects.create(username=username,password=password,type="Child",Status="accepted")
+        obj.save()
         
-        
-        data=Child.objects.create(login=data1,name=name,
+        data2=Child.objects.create(login=data1,parent=data2,name=name,
                                     dob=dob,
                                     gender=gender,
                                     disability_type=disability_type,
                                     disability_percentage=disability_percentage,
                                             )
-        data.save()
-        return render(request,'login.html')
+        data2.save()
+        return redirect(parenthome)
     else:
         return render(request,'parent/add_child.html')
 
     
 
 def parent_viewchild(request):
-    return render(request,'parent/parent_viewchild.html')
+    data=request.session['id']
+    data1=Login.objects.get(id=data)
+    data2=Parent.objects.get(login=data1.id)
+    data3=Child.objects.filter(parent=data2.id)
+    return render(request,'parent/parent_viewchild.html',{'data':data3})
 
-def editchild(request):
-    return render(request,'parent/edit_child.html')
+def editchild(request,id):
+    data=Child.objects.get(id=id)
+    if request.method=='POST':
+        data.name=request.POST['name']
+        data.dob=request.POST['dob']
+        data.disability_type=request.POST['disability_type']
+        data.disability_percentage=request.POST['disability_per']
+        data.save()
+        return redirect(parent_viewchild)
+    else:
+        return render(request,'parent/edit_child.html',{'data':data})
 
 ################################################
 

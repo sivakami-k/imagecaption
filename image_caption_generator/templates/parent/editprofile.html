@@ -4,32 +4,50 @@
       <form action="{% url 'editprofile' id=data.id %}" method="post">
           {% csrf_token %}
   
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" class="form-control" value="{{data.name}}" required/>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" class="form-control" value="{{data.email}}"/>
-
-          <label for="">DOB</label>
-          <input type="date" id="email" name="dob" class="form-control" value="{{data.dob}}"/>
-
+          <table width="200" class="table table-hover table-striped table-bordered">
+            
           
+          <tr>
+            <td>Name</td>
+            <td><input type="text"  name="name"  value="{{ data.name }}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" value="{{ data.email }}" class="form-control"/></td>
+          </tr>
+    
+          <tr>
+          <tr>
+            <td>DOB</td>
+            <td><input type="date"  name="dob" value="{{ data.dob }}" class="form-control"/></td>
+          </tr>
           
-          
-          <label for="country">Country</label>
-          <input type="text" id="country"  name="country" class="form-control" value="{{data.country}}"/>
-          <label for="state">State</label>
-          <input type="text" id="state" name="state" class="form-control" value="{{data.state}}"/>
-          <label for="city">City</label>
-          <input type="text" id="city" name="city" class="form-control" value="{{data.city}}"/>
-          <label for="pin">PIN</label>
-          <input type="text" id="pin" name="pin" class="form-control" value="{{data.pin}}"/>
-          <label for="phone">Phone</label>
-
-          <input type="text" name="phone" id="phone"  class="form-control" value="{{data.phone}}" />
-
-
-
-          <input type="submit"  value="EDIT"/>
+          <tr>
+            <td>Country</td>
+            <td><input type="text" name="country" value="{{ data.country }}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <td>State</td>
+            <td><input type="text" name="state" value="{{ data.state }}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <td>City</td>
+            <td><input type="text" name="city" value="{{ data.city }}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <td>PIN</td>
+            <td><input type="text"  name="pin" value="{{ data.pin }}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td><input type="text" name="phone"  value="{{ data.phone }}" class="form-control"/></td>
+          </tr>
+          <tr>
+                <td>&nbsp;</td>
+            <td><input type="submit" name="button" id="button" value="EDIT" class="btn btn-success" style="background-color: orange;border:none"/></td>
+      
+          </tr>
+        </table>
   </form>
 <style>
 

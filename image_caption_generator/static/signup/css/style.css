@@ -30,7 +30,7 @@ img{max-width:100%;}
 body{
 	font-family: 'Roboto', sans-serif;
 	font-size: 100%;
-	background:url(../images/reg.jpg)no-repeat;
+	background:url('../images/p2.jpg')no-repeat;
     background-position:0px 0px;
 	text-align: left;
 	min-height: 100%;
@@ -144,6 +144,25 @@ ul.icons-text li:nth-child(2) {
     letter-spacing: 1px;
 }
 .login-form input[type="text"], .login-form input[type="email"],.form-control, textarea {
+    width: 95.4%;
+    padding: 10px 10px 10px 10px;
+    font-weight: normal;
+    background: none;
+    border: none;
+	background: rgba(235, 235, 235, 0.15);
+    color: #ffffff !important;
+    outline: none;
+    font-size: 14px;
+    margin: 6px 0 17px 0px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    font-family: 'Roboto', sans-serif;
+}
+.login-form input[type="date"]
+{
     width: 95.4%;
     padding: 10px 10px 10px 10px;
     font-weight: normal;

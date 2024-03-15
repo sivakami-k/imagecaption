@@ -1,48 +1,48 @@
 {% extends 'parent/parenthome.html'%}
 {% block content %} 
-<form id="form1" name="form1" method="post" action="{% url 'parent_viewawareness'%}">
-    {% csrf_token %}
+<form>
+   
 
-<table width="200" class="table table-hover table-striped table-bordered">
-
- <tr>
-    <td>INSTRUCTIONS:*</td>
+    <table width="200" class="table table-hover table-striped table-bordered">
     
-</tr> 
-<tr>
-    <td></td>
-</tr>
-<tr>
-    <td></td>
-</tr>
-<tr>
-    <td></td>
-</tr>
- 
-</table>
-<BR>
-
-<div>
-    <h6> AWARENESS VIDEOS</h6><BR>
-    <video width="320" height="240" controls>
-        <source src="" type="video/mp4">
-        <source src="" type="video/ogg">
-      Your browser does not support the video tag.
-      </video>
-</div>
-</form>
-<style>
-
-form{
-/* background-color: aqua; */
-margin-top: 10%;
-margin-left: 15%;
-width: 70%;
-margin-bottom: 15%;
-}
-
-
-
-
-</style>
+    
+     <tr>
+        <td>INSTRUCTIONS:*</td>
+    
+        
+    </tr> 
+    {% for i in data %}
+    <tr>
+        <td>{{i.instructions}}</td>
+    </tr>
+    {% endfor %}
+    
+    
+    </table>
+    <div><br>
+        <h6><B>AWARENESS VIDEOS</B></h6>
+        {% for i in data %}
+            <video width="320" height="240" controls>
+                <source src="{{i.awareness_videos.url }}">
+            </video>
+            {% endfor %}
+    </div>
+    
+    </form>
+    
+    
+    <style>
+    
+    form{
+    /* background-color: aqua; */
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    margin-bottom: 15%;
+    }
+    
+    
+    
+    
+    </style>
 {%endblock%}

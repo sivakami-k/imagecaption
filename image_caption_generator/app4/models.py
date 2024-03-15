@@ -27,15 +27,15 @@ class Child(models.Model):
     login=models.ForeignKey(Login,on_delete=models.CASCADE)
     parent=models.ForeignKey(Parent,on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    dob=models.DateField()
+    dob=models.CharField(max_length=50)
     gender=models.CharField(max_length=10)
     disability_type = models.CharField(max_length=20)
     disability_percentage = models.IntegerField()
     
 
 class Awareness(models.Model):
-    instructions=models.CharField(max_length=300)
-    awareness_videos=models.FileField()
+    instructions=models.CharField(max_length=300,null=True,blank=True)
+    awareness_videos=models.FileField(null=True,blank=True)
 
 class Review(models.Model):
     parent=models.ForeignKey(Parent,on_delete=models.CASCADE)

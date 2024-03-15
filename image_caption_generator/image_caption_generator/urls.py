@@ -47,7 +47,7 @@ urlpatterns = [
     path('parentreview/',views.parentreview,name="parentreview"),
     path('parent_viewawareness/',views.parent_viewawareness,name="parent_viewawareness"),
     path('addchild/',views.addchild,name="addchild"),
-    path('editchild/',views.editchild,name="editchild"),
+    path('editchild/<int:id>',views.editchild,name="editchild"),
     path('parent_viewchild/',views.parent_viewchild,name="parent_viewchild"),
     
 

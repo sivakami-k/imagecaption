@@ -1,65 +1,53 @@
 {% extends 'parent/parenthome.html' %}
 {% block content %}
-{% csrf_token %}
-
 <div class="c1">
-<table class="table table-hover table-striped table-bordered">
-  <thead>
+  <table width="" class="table table-hover table-striped table-bordered">
     <tr>
       <th scope="col">S/No</th>
-      
-      <th scope="col">Name</th>
+        
+        <th scope="col">Name</th>
+
       <th scope="col">DOB</th>
-      <th scope="col">Gender</th>
+        <th scope="col">Gender</th>
       <th scope="col">Disability Type</th>
-      <th scope="col">Disability Percentage (%)</th>
-      <th scope="col">&nbsp;</th>
-      <th scope="col">&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-         
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="col">Disability Percentage</th>
+	  <th></th>
       
-      <form id="form1" name="form1" method="post" action="{% url 'parent_viewchild'%}">
-        <td><a href="{% url 'editchild'%}" class="btn btn-success" style="background-color: orange;border: none;">EDIT</a></td>
-        <td><a href="" class="btn btn-danger">DELETE </a></td>
-      </form>
+      
     </tr>
-  </tbody>
-</table>
+    {% for i in data %}
+     <tr>
+      <td>{{forloop.counter}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.dob}}</td>
+         <td>{{i.gender}}</td>
+        <td>{{i.disability_type}}</td>
+         <td>{{i.disability_percentage}}</td>
+		 
+      
+        
+         
+		  <td><a href="{% url 'editchild' id=i.id %}"  class="btn btn-primary"  style="background-color: orange;border:none;"><button style="background-color: orange;border:none;color:white;">EDIT</button></a></td>
 
-</div>
-
-
+    
   
-
-
-<style>
-
-.c1{
-    /* background-color: aqua; */
-    /* margin-top: 10%;
-    margin-left: 15%;
-    width: 70%;
-    margin-bottom: 15%; */
-    margin-top: 10%;
-       margin-left:14%;
+  </td>
+     </tr>
+    {% endfor %}
      
-        width: 70%;
-       padding: 3%;
-       margin-bottom:15% ;
-       /* height: 35%; */
-}
+  </table></div>
+  <style>
+	.c1{
+	  width: 70%;
+	  margin-top: 20%;
+	  margin-left: 15%;
+	  margin-bottom: 15%;
+	}
+	
+	
+	
+	
+	</style>
+	{%endblock%}
 
 
-
-
-</style>
-{%endblock%}

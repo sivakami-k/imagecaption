@@ -1,22 +1,25 @@
 {% extends 'parent/parenthome.html'%}
 {% block content %}   
-   <form action="{% url 'editchild'%}" method="='POST">
+   <form action="{% url 'editchild' id=data.id %}" method="POST">
        {% csrf_token %}
 
  <table width="200" class="table table-hover table-striped table-bordered">
    
     <tr>
         <td>Name</td>
-        <td><input type="text" required name="name" id="textfield" class="form-control"/></td>
+        <td><input type="text" required name="name" id="textfield" class="form-control"  value="{{ data.name }}" /></td>
       </tr>
       <tr>
         <td>DOB</td>
-        <td><input type="date" required name="dob" id="textfield2" class="form-control"/></td>
+        
+        <td><input type="date" required name="dob" id="dob" class="form-control" value="{{ data.dob }}" /></td>
+      
       </tr>
+      
       <tr>
         <td>Disability Type</td>
-        <td><select class="form-control" name="disability_type">
-          <option>Disability Type</option>
+        <td><select class="form-control" name="disability_type"   >
+          <option value="{{ data.disability_type }}">{{ data.disability_type }}</option>
           <option>India</option>
           <option>Georgia</option>
           <option> Dominica</option>
@@ -26,7 +29,7 @@
       </tr>
       <tr>
         <td>Diasability Percentage (%)</td>
-        <td><input type="text" required name="disability_per" id="textfield4" class="form-control"/></td>
+        <td><input type="text" required name="disability_per" id="textfield4" class="form-control"  value="{{ data.disability_percentage }}"/></td>
       </tr>
    <tr>
          <td>&nbsp;</td>
