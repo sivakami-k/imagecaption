@@ -33,8 +33,9 @@ urlpatterns = [
     path('accept/<int:id>', views.accept,name="accept"),
     path('adminreview/',views.adminreview,name="adminreview"),
     path('addawareness/',views.addawareness,name="addawareness"),
+    path('addinstruction/',views.addinstruction,name="addinstruction"),
     path('admin_viewawareness/',views.admin_viewawareness,name="admin_viewawareness"),
-    path('edit_awareness/',views.edit_awareness,name="edit_awareness"),
+    path('delete_awareness/<int:id>',views.delete_awareness,name="delete_awareness"),
 
 
 

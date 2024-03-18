@@ -1,34 +1,41 @@
 {% extends 'admin/adminhome.html'%}
 {% block content %} 
 <form >
-   
-
 <table width="200" class="table table-hover table-striped table-bordered">
-
-
  <tr>
     <td>INSTRUCTIONS:*</td>
-
-    
+   
 </tr> 
 {% for i in data %}
+{% if i.instructions %}
 <tr>
     <td>{{i.instructions}}</td>
-    <td><a href="{% url 'edit_awareness'%}" class="btn btn-success" style="background-color: orange;border: none;margin-left: 24%;width:50%;">EDIT</a></td> 
+    <td><a href="{% url 'delete_awareness' id=i.id %}" class="btn btn-success" style="background-color: orange;border: none;margin-left: 24%;width:50%;">DELETE</a></td> 
 
 </tr>
+{% endif %}
 {% endfor %}
 
 
 </table>
+
+
 <div><br>
-    <h6><B>AWARENESS VIDEOS</B></h6>
-    {% for i in data %}
-        <video width="320" height="240" controls>
-            <source src="{{i.awareness_videos.url }}">
-        </video>
+    <h6><b>AWARENESS VIDEOS</b></h6>
+    <div class="video-container">
+        {% for i in data %}
+            {% if i.awareness_videos %}
+                <div class="video-item">
+                    <video width="100%" height="auto" controls>
+                        <source src="{{i.awareness_videos.url }}">
+                    </video>
+                    <td><a href="{% url 'delete_awareness' id=i.id %}" class="btn btn-success" style="background-color: orange; border: none; margin-top: 10px; width: 100%;">DELETE</a></td> 
+                </div>
+            {% endif %}
         {% endfor %}
+    </div>
 </div>
+
 
 </form>
 
@@ -43,6 +50,16 @@ width: 70%;
 margin-bottom: 15%;
 }
 
+
+    .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .video-item {
+        width: 24%; 
+        margin-bottom: 20px;
+    }
 
 
 

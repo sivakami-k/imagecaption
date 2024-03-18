@@ -1,12 +1,12 @@
 {% extends 'admin/adminhome.html' %}
 {% block content %}
-<form method="post" enctype="multipart/form-data"  action="{% url 'edit_awareness'%}">
+<form method="post" action="{% url 'edit_awareness' id=data.id %}">
     {% csrf_token %}
     <table width="200" class="table table-hover table-striped table-bordered">
 
       <tr>
         <td>ADD INSTRUCTIONS</td>
-          <td><textarea name="feed" required class="form-control"></textarea></td>
+          <td><textarea name="instruction" required class="form-control" value="{{data.instructions}}"></textarea></td>
       </tr>
       <tr>
         <td></td>

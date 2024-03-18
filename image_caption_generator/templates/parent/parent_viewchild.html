@@ -1,6 +1,6 @@
 {% extends 'parent/parenthome.html' %}
 {% block content %}
-<div class="c1">
+<form>
   <table width="" class="table table-hover table-striped table-bordered">
     <tr>
       <th scope="col">S/No</th>
@@ -27,7 +27,7 @@
       
         
          
-		  <td><a href="{% url 'editchild' id=i.id %}"  class="btn btn-primary"  style="background-color: orange;border:none;"><button style="background-color: orange;border:none;color:white;">EDIT</button></a></td>
+		  <td><a href="{% url 'editchild' id=i.id %}"  class="btn btn-success"  style="background-color: orange;border:none;">EDIT</a></td>
 
     
   
@@ -35,13 +35,13 @@
      </tr>
     {% endfor %}
      
-  </table></div>
+  </table></form>
   <style>
-	.c1{
-	  width: 70%;
-	  margin-top: 20%;
-	  margin-left: 15%;
-	  margin-bottom: 15%;
+	form{
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    margin-bottom: 15%;
 	}
 	
 	

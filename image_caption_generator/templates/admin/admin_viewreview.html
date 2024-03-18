@@ -14,14 +14,17 @@
   <th scope="col">Review</th>
 </tr>
 
-<tr>
-  <td></td>
-  <td></td>
-   <td></td>
-  
-  <td></td>
-  <td></td>
+{% for i in data %}
+<td>{{forloop.counter}}</td>
+<td>{{i.PARENT.name}}</td>
+ <td>{{i.PARENT.email}}</td>
+
+<td>{{i.date}}</td>
+<td>{{i.review}}</td>
 </tr>
+
+
+{% endfor %}
 
 
 </table>

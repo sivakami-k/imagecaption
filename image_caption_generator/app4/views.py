@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Login,Parent,Child,Awareness,Review
 from django.contrib.auth import authenticate,login,logout
+import datetime
 
 # Create your views here.
 
@@ -103,26 +104,49 @@ def accept(request,id):
 
 
 def adminreview(request):
-    return render(request,'admin/admin_viewreview.html')
+    data=Review.objects.all()
+    return render(request,'admin/admin_viewreview.html',{'data':data})
 
-def addawareness(request):
+def addinstruction(request):
     if request.method =='POST':
         instructions=request.POST['instructions']
-        videos=request.FILES['videos']
-        obj=Awareness.objects.create(instructions=instructions,awareness_videos=videos)
+        obj=Awareness.objects.create(instructions=instructions)
         obj.save()
-        return render(request,'admin/admin_viewawareness.html')
+        return redirect(admin_viewawareness)
     else:
         return render(request,'admin/add_awareness.html')
+    
+def addawareness(request):
+    if request.method =='POST':
+        videos=request.FILES['videos']
+        obj=Awareness.objects.create(awareness_videos=videos)
+        obj.save()
+        return redirect(admin_viewawareness)
+    else:
+        return render(request,'admin/add_awareness.html')
+    
+# def addawareness(request):
+#     if request.method =='POST':
+#         instructions=request.POST['instructions']
+#         awareness_videos=request.FILES['videos']
+    
+#         obj=Awareness.objects.create(instructions=instructions,awareness_videos=awareness_videos)
+#         obj.save()
+#         return redirect(admin_viewawareness)
+
+#     else:
+#         return render(request,'admin/add_awareness.html')
 
 def admin_viewawareness(request):
     data=Awareness.objects.all()
     return render(request,'admin/admin_viewawareness.html',{'data':data})
 
-def edit_awareness(request):
-    # if request.method=='post':
+def delete_awareness(request,id):
+    data=Awareness.objects.get(id=id)
+    data.delete()
+    return redirect(admin_viewawareness)
 
-    return render(request,'admin/admin_editawareness.html')
+    
 
 # def studentreg(request):
 #     if request.method=='POST':
@@ -173,8 +197,6 @@ def changepw(request):
         current_password=request.POST['current_password']
         new_password=request.POST['new_password']
         confirm_password=request.POST['confirm_password']
-        print(current_password)
-        print(new_password)
         if new_password!=confirm_password:
             return render(request,'parent/changepassword.html',{'message':'Password not matching'})
         
@@ -189,10 +211,24 @@ def vision(request):
     return render(request,'parent/visionverb.html')
 
 def addreview(request):
-    return render(request,'parent/add_review.html')
+    data=request.session['id']
+    data1=Login.objects.get(id=data)
+    data2=Parent.objects.get(login=data1.id)
+    if request.method=='post':
+        review=request.POST['review']
+        date=datetime.datetime.now().date()
+        obj=Review.objects.create(login=data1,parent=data2,date=date,review=review)
+        obj.save()
+        return redirect(parentreview)
+    else:
+        return render(request,'parent/add_review.html')
 
 def parentreview(request):
-    return render(request,'parent/parent_viewreview.html')
+    data=request.session['id']
+    data1=Login.objects.get(id=data)
+    data2=Parent.objects.get(login=data1.id)
+    data3=Review.objects.filter(parent=data2.id)
+    return render(request,'parent/parent_viewreview.html',{'data':data3})
 
 def parent_viewawareness(request):
     data=Awareness.objects.all()
